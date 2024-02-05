@@ -83,22 +83,22 @@ public class FlutterAimlPlugin implements FlutterPlugin, MethodCallHandler {
     boolean a = isSDCARDAvailable();
     // receiving the assets from the app directory
     AssetManager assets = flutterPluginBinding.getApplicationContext().getAssets();
-    File jayDir = new File(dirpath + "/AVA/bots/AVA");
+    File jayDir = new File(dirpath + "/AIML/bots/BOT");
     boolean b = jayDir.mkdirs();
     if (jayDir.exists()) {
       // Reading the file
       try {
-        for (String dir : assets.list("AVA")) {
+        for (String dir : assets.list("AIML")) {
           File subdir = new File(jayDir.getPath() + "/" + dir);
           boolean subdir_check = subdir.mkdirs();
-          for (String file : assets.list("AVA/" + dir)) {
+          for (String file : assets.list("AIML/" + dir)) {
             File f = new File(jayDir.getPath() + "/" + dir + "/" + file);
             if (f.exists()) {
               continue;
             }
             InputStream in = null;
             OutputStream out = null;
-            in = assets.open("AVA/" + dir + "/" + file);
+            in = assets.open("AIML/" + dir + "/" + file);
             out = new FileOutputStream(jayDir.getPath() + "/" + dir + "/" + file);
             // copy file from assets to the mobile's SD card or any secondary memory
             copyFile(in, out);
@@ -114,14 +114,13 @@ public class FlutterAimlPlugin implements FlutterPlugin, MethodCallHandler {
       }
     }
     // get the working directory
-    MagicStrings.root_path = dirpath.trim() + "/AVA";
+    MagicStrings.root_path = dirpath.trim() + "/AIML";
     System.out.println("Working Directory = " + MagicStrings.root_path);
     AIMLProcessor.extension = new PCAIMLProcessorExtension();
     // Assign the AIML files to bot for processing
-    bot = new Bot("AVA", MagicStrings.root_path, "chat");
+    bot = new Bot("BOT", MagicStrings.root_path, "chat");
     chat = new Chat(bot);
     String[] args = null;
-    mainFunction(args);
   }
 
   // check SD card availability
@@ -136,19 +135,6 @@ public class FlutterAimlPlugin implements FlutterPlugin, MethodCallHandler {
     while ((read = in.read(buffer)) != -1) {
       out.write(buffer, 0, read);
     }
-  }
-
-  // Request and response of user and the bot
-  public static void mainFunction(String[] args) {
-    MagicBooleans.trace_mode = false;
-    System.out.println("trace mode = " + MagicBooleans.trace_mode);
-    Graphmaster.enableShortCuts = true;
-    Timer timer = new Timer();
-    String request = "name.";
-    String response = chat.multisentenceRespond(request);
-
-    System.out.println("Human: " + request);
-    System.out.println("Robot: " + response);
   }
 
 }
