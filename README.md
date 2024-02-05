@@ -1,15 +1,46 @@
-# flutter_aiml
 
-A new Flutter plugin project.
+# Flutter_AIML
 
-## Getting Started
+A plugin for using aiml on flutter on Android.
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+add this to your pubspec.yaml file
+
+flutter_aiml:
+    git:
+      url: https://github.com/ameyreghu/flutter_aiml.git
+      ref: main
+
+## Adding AIML files
+
+add the aiml files to
+
+Android
+  - app
+    - src
+      - main  
+        - assets
+          - AIML
+
+refer example
+
+## Min Sdk 
+update app level buil.gradle
+
+minSdkVersion 22
+
+
+## Usage
+
+ FlutterAiml aiml = FlutterAiml() ;
+
+ aiml.invokeSetup();  //to setup the aiml files for the aiml bot
+
+var response = await aiml.getResponse(message: 'HI'); 
+
+
+for more refer the example .
+
 
