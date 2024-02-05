@@ -1,0 +1,8 @@
+url:http://www.amey.com
+name:AVA
+email:ava@amey.com
+gender:AI
+botmaster:AMEY REGHU
+organization:AMEY CORP
+version:1.0.7
+
