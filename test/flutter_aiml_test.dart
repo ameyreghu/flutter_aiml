@@ -9,7 +9,14 @@ class MockFlutterAimlPlatform
     implements FlutterAimlPlatform {
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<void> invokeSetup() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> getResponse({required String message}) => Future.value('Hello');
+  
+ 
 }
 
 void main() {
@@ -19,11 +26,11 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelFlutterAiml>());
   });
 
-  test('getPlatformVersion', () async {
+  test('getResponse', () async {
     FlutterAiml flutterAimlPlugin = FlutterAiml();
     MockFlutterAimlPlatform fakePlatform = MockFlutterAimlPlatform();
     FlutterAimlPlatform.instance = fakePlatform;
 
-    expect(await flutterAimlPlugin.getPlatformVersion(), '42');
+    expect(await flutterAimlPlugin.getResponse(message: 'hi'), 'Hello');
   });
 }

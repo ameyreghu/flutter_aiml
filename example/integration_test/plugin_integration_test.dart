@@ -6,7 +6,6 @@
 // For more information about Flutter integration tests, please see
 // https://docs.flutter.dev/cookbook/testing/integration/introduction
 
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
@@ -15,11 +14,14 @@ import 'package:flutter_aiml/flutter_aiml.dart';
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('getPlatformVersion test', (WidgetTester tester) async {
+  setUpAll(() {
+    FlutterAiml().invokeSetup();
+  });
+
+  testWidgets('getResponse integration test', (WidgetTester tester) async {
     final FlutterAiml plugin = FlutterAiml();
-    final String? version = await plugin.getPlatformVersion();
-    // The version string depends on the host platform running the test, so
-    // just assert that some non-empty string is returned.
-    expect(version?.isNotEmpty, true);
+    //await plugin.invokeSetup();
+    var response = await plugin.getResponse(message: 'Hi');
+    expect(response.isNotEmpty, true);
   });
 }
