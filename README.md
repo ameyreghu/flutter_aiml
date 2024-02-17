@@ -8,10 +8,7 @@ A plugin for using aiml on flutter on Android.
 
 add this to your pubspec.yaml file
 
-flutter_aiml:
-    git:
-      url: https://github.com/ameyreghu/flutter_aiml.git
-      ref: main
+flutter_aiml: ^0.0.2
 
 ## Adding AIML files
 
@@ -24,7 +21,8 @@ Android
         - assets
           - AIML
 
-refer example
+
+refer example for more.
 
 ## Min Sdk 
 update app level buil.gradle
@@ -36,9 +34,9 @@ minSdkVersion 22
 
  FlutterAiml aiml = FlutterAiml() ;
 
- aiml.invokeSetup();  //to setup the aiml files for the aiml bot
+ aiml.invokeSetup();  //to setup the aiml files for the aiml bot 
 
-var response = await aiml.getResponse(message: 'HI'); 
+ var response = await aiml.getResponse(message: 'HI'); 
 
 
 for more refer the example .

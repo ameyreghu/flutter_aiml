@@ -1,7 +1,11 @@
 name: flutter_aiml
 description: "A Flutter plugin project to use AIML on Android."
-version: 0.0.1
+version: 0.0.2
 homepage:
+repository: https://github.com/ameyreghu/flutter_aiml
+
+platforms:
+  android:
 
 environment:
   sdk: '>=3.2.6 <4.0.0'
